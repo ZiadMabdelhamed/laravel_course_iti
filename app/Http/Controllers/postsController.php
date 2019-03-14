@@ -71,6 +71,7 @@ class postsController extends Controller
     public function destroy($post)
     {
 //        dd($post);
+
         Post::find($post)->delete();
 
         return redirect(route('posts.index'));
