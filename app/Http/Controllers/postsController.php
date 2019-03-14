@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\updatePostRequest;
+use App\Rules\user_posts_limit;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
@@ -31,7 +32,9 @@ class postsController extends Controller
     public function store(StorePostRequest $request)
     {
         $data = $request->validated();
+//        dd($data['user_id']);
 
+        $this->validate($request, ['user_id' => new user_posts_limit()]);
 //        $data = $request->input();
 //        $data['slug'] = 'test_slug';
 //        dd($data);

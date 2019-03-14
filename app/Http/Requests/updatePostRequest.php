@@ -29,7 +29,7 @@ class updatePostRequest extends FormRequest
         $rules = [
             'title' => 'required|max:255|min:3|unique:posts'. ',id,' . $id,
             'description' => 'required|min:10',
-            'user_id' => 'required|exists:posts'
+//            'user_id' => 'required|exists:posts'
         ];
 
         return $rules;
