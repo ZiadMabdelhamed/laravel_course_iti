@@ -40,13 +40,16 @@ class postsController extends Controller
 //        dd($data);
 
         Post::create($data);
+//        dd(Post::create($data));
         return redirect(route('posts.index'));
     }
 
     public function show(Post $post)
     {
 
-        return view('Posts.show')->with('post',$post);
+//        return view('Posts.show')->with('post',$post);
+        return response()->json(array('posts'=>$post));
+
 
     }
 

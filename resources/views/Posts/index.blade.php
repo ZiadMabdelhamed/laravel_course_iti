@@ -69,8 +69,14 @@
                     </button>
                 </div>
                 <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                    <label>Tilte :</label>
+                    <br>
+                    <div id="post_title"></div>
+                    <br>
+                    <label>Description :</label>
+                    <br>
+                    <div id="post_desc"></div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -109,8 +115,25 @@
     <script>
         $(document).on('click','#show_ajax_toggle',function () {
             var post_id = $(this).attr('row_id');
-            // $('#form_delete').attr('action','/posts/'+delete_id);
-            alert(post_id);
+            $.ajax({
+                type: 'GET', //THIS NEEDS TO BE GET
+                url: '/posts/'+post_id,
+                success: function (data) {
+                    console.log(data);
+                    $('#post_title').html(data['posts']['title']);
+                    $('#post_desc').html(data['posts']['description']);
+                    // var obj = JSON.parse(data);
+                    // var your_html = "";
+                    // $.each(obj['getstamps'], function (key, val) {
+                    //     your_html += "<p>My Value :" +  val + ") </p>"
+                    // });
+                    // $("#data").append(you_html); //// For Append
+                    // $("#mydiv").html(your_html)   //// For replace with previous one
+                },
+                error: function() {
+                    console.log(data);
+                }
+            });
         });
     </script>
 @endsection
