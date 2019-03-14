@@ -23,9 +23,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    Dashboard
                 </a>
+                <a href="/posts">All Posts</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -73,6 +74,11 @@
         </nav>
 
         <main class="py-4">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert ">{{$error}}</div>
+                @endforeach
+            @endif
             @yield('content')
         </main>
     </div>

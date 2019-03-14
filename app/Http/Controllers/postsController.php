@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\updatePostRequest;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
@@ -26,8 +28,9 @@ class postsController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
+
         $data = $request->input();
 //        dd($data);
         Post::create($data);
@@ -48,8 +51,9 @@ class postsController extends Controller
 
     }
 
-    public function update(Request $request,$post)
+    public function update(updatePostRequest $request,$post)
     {
+
 
         $data = $request->input();
         Post::find($post)->update($data);
