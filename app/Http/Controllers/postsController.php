@@ -30,9 +30,12 @@ class postsController extends Controller
 
     public function store(StorePostRequest $request)
     {
+        $data = $request->validated();
 
-        $data = $request->input();
+//        $data = $request->input();
+//        $data['slug'] = 'test_slug';
 //        dd($data);
+
         Post::create($data);
         return redirect(route('posts.index'));
     }

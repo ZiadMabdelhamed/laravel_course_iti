@@ -33,6 +33,7 @@ class StorePostRequest extends FormRequest
         $rules = [
             'title' => 'required|unique:posts|max:255|min:3',
             'description' => 'required|min:10',
+            'user_id' => 'required|exists:posts'
         ];
 
 

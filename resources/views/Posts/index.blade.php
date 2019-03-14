@@ -9,6 +9,7 @@
             <th>Title</th>
             <th>Description</th>
             <th>Creator</th>
+            <th>Slug</th>
         </tr>
         </thead>
         <tbody>
@@ -17,10 +18,13 @@
                 <td>{{$post->title}}</td>
                 <td>{{$post->description}}</td>
                 <td>{{@$post->user->name}}</td>
+                <td>{{$post->slug}}</td>
                 <td><a href="/posts/{{$post->id}}/edit">EDIT</a></td>
                 <td><a type="button"  row_id="{{$post->id}}" data-toggle="modal" data-target="#exampleModal" id="delete_toggle">
                         Delete
-                    </a></td>
+                    </a>
+                </td>
+
             </tr>
 
         @endforeach
