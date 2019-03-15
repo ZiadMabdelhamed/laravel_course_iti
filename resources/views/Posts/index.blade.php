@@ -3,6 +3,8 @@
 
 @section('content')
     <a href="{{route('posts.create')}}">Create new</a>
+    {{--R--}}
+
     <table class="table table-striped">
         <thead>
         <tr>
