@@ -17,8 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/posts','Api\PostsController@index');
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/posts','Api\PostsController@index');
 
-//Route::post('/posts','Api\PostsController@store');
+    Route::post('/posts','Api\PostsController@store');
 
-Route::get('/posts/{post}','Api\PostsController@show');
+    Route::get('/posts/{post}','Api\PostsController@show');
+
+});
